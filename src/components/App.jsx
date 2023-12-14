@@ -52,12 +52,19 @@ export class App extends Component {
     }));
   };
 
-  handleFilter = e => {
+  handleFilter = (e) => {
     this.setState({ filter: e.target.value });
+  };
+
+  handleDeleteContact = id => {
+    this.setState({
+  contacts: this.state.contacts.filter(contact => contact.id !== id)
+})
   };
 
   render() {
     const { contacts, name, number, filter } = this.state;
+
     const filteredContacts = contacts.filter(contact =>
       contact.name.toLowerCase().includes(filter.toLowerCase())
     );
@@ -75,6 +82,7 @@ export class App extends Component {
           handleAddContact={this.handleAddContact}
           handlePhoneChange={this.handlePhoneChange}
           handleFilter={this.handleFilter}
+          handleDeleteContact={this.handleDeleteContact}
         ></Contacts>
       </div>
     );

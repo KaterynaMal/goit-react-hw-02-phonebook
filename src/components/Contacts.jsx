@@ -1,6 +1,7 @@
 import React from 'react';
 import css from './ContactsForm.module.css';
 
+
 const Contacts = ({
   name,
   contacts,
@@ -9,7 +10,9 @@ const Contacts = ({
   handleNameChange,
   handleAddContact,
   handlePhoneChange,
-  handleFilter,
+    handleFilter,
+    handleDeleteContact,
+  
 }) => {
   return (
     <div className={css.form_container}>
@@ -49,8 +52,9 @@ const Contacts = ({
 
       <ul>
         {contacts.map(contact => (
-          <li key={contact.id}>
-            {contact.name}: {contact.number}
+          <li className={css.contact_item} key={contact.id}>
+                {contact.name}: {contact.number}
+                 <button type="button" className={css.delete_btn} onClick={() => handleDeleteContact(contact.id)}>Delete</button>
           </li>
         ))}
       </ul>
