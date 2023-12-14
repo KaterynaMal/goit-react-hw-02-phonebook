@@ -1,7 +1,9 @@
 import { Component } from 'react';
 
-// import { ContactForm } from './ContactForm'
-import { Contacts } from './Contacts';
+import { ContactForm } from './ContactForm'
+import { Filter } from './Filter';
+
+import { ContactList } from './ContactList';
 import css from './ContactsForm.module.css';
 import { nanoid } from 'nanoid';
 
@@ -13,7 +15,7 @@ export class App extends Component {
     number: '',
   };
 
-  handleNameChange = e => {
+  handleNameChange = (e) => {
     this.setState({ name: e.target.value });
   };
 
@@ -22,7 +24,7 @@ export class App extends Component {
   };
 
   handleAddContact = () => {
-    const { name, number, contacts } = this.state;
+    const { contacts, name, number } = this.state;
 
     if (name.trim() === '' || number.trim() === '') {
       alert('Please, enter name and phone number');
@@ -53,7 +55,7 @@ export class App extends Component {
   };
 
   handleFilter = (e) => {
-    this.setState({ filter: e.target.value });
+    this.setState({ filter: e.target.value});
   };
 
   handleDeleteContact = id => {
@@ -63,27 +65,34 @@ export class App extends Component {
   };
 
   render() {
-    const { contacts, name, number, filter } = this.state;
+    const { contacts, filter, name, number } = this.state;
 
     const filteredContacts = contacts.filter(contact =>
       contact.name.toLowerCase().includes(filter.toLowerCase())
     );
 
     return (
-      <div className={css.container}>
+      <div className={css.form_container}>
         <h1>Phonebook</h1>
-        <Contacts
-          name={name}
+
+        <ContactForm
+           name={name}
           number={number}
-          // contacts={contacts}
-          contacts={filteredContacts}
-          filter={filter}
           handleNameChange={this.handleNameChange}
           handleAddContact={this.handleAddContact}
           handlePhoneChange={this.handlePhoneChange}
+        ></ContactForm>
+        <h2>Contacts</h2>
+        <Filter
+          filter={filter}
           handleFilter={this.handleFilter}
+          
+        ></Filter>
+        <ContactList
+          contacts={filteredContacts}
           handleDeleteContact={this.handleDeleteContact}
-        ></Contacts>
+        ></ContactList>
+        
       </div>
     );
   }
@@ -94,3 +103,17 @@ export class App extends Component {
 // <h2>Contacts</h2>
 // <Filter ... />
 // <ContactList ... />
+
+
+// {/* <Contacts
+//           name={name}
+//           number={number}
+//           contacts={contacts}
+//           contacts={filteredContacts}
+//           filter={filter}
+//           handleNameChange={this.handleNameChange}
+//           handleAddContact={this.handleAddContact}
+//           handlePhoneChange={this.handlePhoneChange}
+//           handleFilter={this.handleFilter}
+//           handleDeleteContact={this.handleDeleteContact}
+//         ></Contacts> */}
