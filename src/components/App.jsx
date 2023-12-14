@@ -22,12 +22,22 @@ export class App extends Component {
   };
 
   handleAddContact = () => {
-    const { name, number } = this.state;
+    const { name, number, contacts } = this.state;
 
     if (name.trim() === '' || number.trim() === '') {
       alert('Please, enter name and phone number');
       return;
     }
+
+    const isNameExist = contacts.some(
+      contact => contact.name.toLowerCase() === name.trim().toLowerCase()
+    );
+
+    if (isNameExist) {
+      alert(`${name} is already in contacts`);
+      return;
+    }
+
 
     const newContact = {
       id: nanoid(),
