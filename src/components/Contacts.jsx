@@ -5,9 +5,11 @@ const Contacts = ({
   name,
   contacts,
   number,
+  filter,
   handleNameChange,
-    handleAddContact,
-  handlePhoneChange
+  handleAddContact,
+  handlePhoneChange,
+  handleFilter,
 }) => {
   return (
     <div className={css.form_container}>
@@ -22,6 +24,7 @@ const Contacts = ({
           onChange={handleNameChange}
         />
 
+        <label className={css.label}>Number</label>
         <input
           className={css.input}
           type="tel"
@@ -36,9 +39,19 @@ const Contacts = ({
         </button>
       </form>
       <h2>Contacts</h2>
+      <p>Find contacts by name</p>
+      <input
+        className={css.input}
+        type="text"
+        value={filter}
+        onChange={handleFilter}
+      />
+
       <ul>
-        {contacts.map((contact) => (
-            <li key={contact.id}>{contact.name}: {contact.number}</li>
+        {contacts.map(contact => (
+          <li key={contact.id}>
+            {contact.name}: {contact.number}
+          </li>
         ))}
       </ul>
     </div>
