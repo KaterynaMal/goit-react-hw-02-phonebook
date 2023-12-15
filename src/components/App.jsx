@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-import { ContactForm } from './ContactForm'
+import { ContactForm } from './ContactForm';
 import { Filter } from './Filter';
 
 import { ContactList } from './ContactList';
@@ -17,6 +17,7 @@ export class App extends Component {
 
   handleNameChange = (e) => {
     this.setState({ name: e.target.value });
+   
   };
 
   handlePhoneChange = e => {
@@ -40,7 +41,6 @@ export class App extends Component {
       return;
     }
 
-
     const newContact = {
       id: nanoid(),
       name: name.trim(),
@@ -54,18 +54,18 @@ export class App extends Component {
     }));
   };
 
-  handleFilter = (e) => {
-    this.setState({ filter: e.target.value});
+  handleFilter = e => {
+    this.setState({ filter: e.target.value });
   };
 
   handleDeleteContact = id => {
     this.setState({
-  contacts: this.state.contacts.filter(contact => contact.id !== id)
-})
+      contacts: this.state.contacts.filter(contact => contact.id !== id),
+    });
   };
 
   render() {
-    const { contacts, filter, name, number } = this.state;
+    const { contacts, filter, name, number} = this.state;
 
     const filteredContacts = contacts.filter(contact =>
       contact.name.toLowerCase().includes(filter.toLowerCase())
@@ -76,44 +76,19 @@ export class App extends Component {
         <h1>Phonebook</h1>
 
         <ContactForm
-           name={name}
+          name={name}
           number={number}
           handleNameChange={this.handleNameChange}
           handleAddContact={this.handleAddContact}
           handlePhoneChange={this.handlePhoneChange}
         ></ContactForm>
         <h2>Contacts</h2>
-        <Filter
-          filter={filter}
-          handleFilter={this.handleFilter}
-          
-        ></Filter>
+        <Filter filter={filter} handleFilter={this.handleFilter}></Filter>
         <ContactList
           contacts={filteredContacts}
           handleDeleteContact={this.handleDeleteContact}
         ></ContactList>
-        
       </div>
     );
   }
 }
-
-// <ContactForm ... />
-
-// <h2>Contacts</h2>
-// <Filter ... />
-// <ContactList ... />
-
-
-// {/* <Contacts
-//           name={name}
-//           number={number}
-//           contacts={contacts}
-//           contacts={filteredContacts}
-//           filter={filter}
-//           handleNameChange={this.handleNameChange}
-//           handleAddContact={this.handleAddContact}
-//           handlePhoneChange={this.handlePhoneChange}
-//           handleFilter={this.handleFilter}
-//           handleDeleteContact={this.handleDeleteContact}
-//         ></Contacts> */}

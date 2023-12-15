@@ -4,12 +4,6 @@
   padding-left: 100px;
 }
 
-/* .form_container {
-    margin-left: 20px;
-    margin-right: auto;
-    
-} */
-
 .form {
   display: flex;
   flex-direction: column;
@@ -37,24 +31,26 @@
 }
 
 .contact_item {
-    display: flex;
-    gap: 15px;
-    align-items: center;
+  display: flex;
+  gap: 15px;
+  align-items: center;
 }
 
 .delete_btn {
-    background-color: aliceblue;
-    border-color: rgb(248, 246, 246);
-        cursor: pointer;
-        padding: 5px;
+  background-color: aliceblue;
+  border-color: rgb(248, 246, 246);
+  cursor: pointer;
+  padding: 5px;
 }
 
-/* .btn:hover
-.btn:focus {
-    
-    background-color: aquamarine;
-}  */
+.btn:hover {
+  background-color: rgb(221, 248, 239);
+}
+
+.delete_btn:hover {
+  background-color: rgb(221, 248, 239);
+}
 
 ul {
-    padding: 0;
+  padding: 0;
 }

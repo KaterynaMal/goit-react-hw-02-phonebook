@@ -1,19 +1,25 @@
 import React from 'react';
 import css from './ContactsForm.module.css';
 
-const ContactList = ({contacts, handleDeleteContact}) => {
+const ContactList = ({ contacts, handleDeleteContact }) => {
   return (
-      <div>
-          <ul>
+    <div>
+      <ul>
         {contacts.map(contact => (
           <li className={css.contact_item} key={contact.id}>
-                {contact.name}: {contact.number}
-                 <button type="button" className={css.delete_btn} onClick={() => handleDeleteContact(contact.id)}>Delete</button>
+            {contact.name}: {contact.number}
+            <button
+              type="button"
+              className={css.delete_btn}
+              onClick={() => handleDeleteContact(contact.id)}
+            >
+              Delete
+            </button>
           </li>
         ))}
       </ul>
     </div>
-  )
-}
+  );
+};
 
 export { ContactList };

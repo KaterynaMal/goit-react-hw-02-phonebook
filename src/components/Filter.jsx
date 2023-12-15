@@ -1,12 +1,10 @@
 import React from 'react';
 import css from './ContactsForm.module.css';
 
-
-
-const Filter = ({filter, handleFilter}) => {
+const Filter = ({ filter, handleFilter }) => {
   return (
-      <div>
-           <p>Find contacts by name</p>
+    <div>
+      <p>Find contacts by name</p>
       <input
         className={css.input}
         type="text"
@@ -14,7 +12,7 @@ const Filter = ({filter, handleFilter}) => {
         onChange={handleFilter}
       />
     </div>
-  )
-}
+  );
+};
 
 export { Filter };
